@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Constant\Works;
 use App\Entity\CV;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\ORM\EntityManagerInterface;
@@ -29,14 +30,16 @@ class CVFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();
+        $works = Works::getAll();
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 50; $i++) {
             $cv = new CV();
             $cv->setName($faker->name);
             $cv->setAddress($faker->address);
-            $cv->setExperience('Big');
+            $cv->setExperience(rand(1, 100));
             $cv->setEducation('Higher');
-            $cv->setWork($faker->company);
+            $randKey = array_rand($works);
+            $cv->setWork($works[$randKey]);
 
             $this->entityManager->persist($cv);
         }

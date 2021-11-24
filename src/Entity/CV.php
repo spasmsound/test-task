@@ -5,7 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="App\Repository\CVRepository")
  * @ORM\Table(name="app_cv")
  */
 class CV
@@ -43,10 +43,10 @@ class CV
     private string $work;
 
     /**
-     * @var string
-     * @ORM\Column(type="string")
+     * @var int
+     * @ORM\Column(type="integer")
      */
-    private string $experience;
+    private int $experience;
 
     /**
      * @return string
@@ -99,22 +99,6 @@ class CV
     /**
      * @return string
      */
-    public function getExperience(): string
-    {
-        return $this->experience;
-    }
-
-    /**
-     * @param string $experience
-     */
-    public function setExperience(string $experience): void
-    {
-        $this->experience = $experience;
-    }
-
-    /**
-     * @return string
-     */
     public function getWork(): string
     {
         return $this->work;
@@ -134,6 +118,22 @@ class CV
     public function getId(): int
     {
         return $this->id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getExperience(): int
+    {
+        return $this->experience;
+    }
+
+    /**
+     * @param int $experience
+     */
+    public function setExperience(int $experience): void
+    {
+        $this->experience = $experience;
     }
 
 }

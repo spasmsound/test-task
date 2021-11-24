@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Job page</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="col-lg-8 col-6">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h4><strong>{{ job.title }}</strong></h4>
+                        <h5>{{ job.company }}</h5>
+                        <p>{{ job.description|raw }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">CVs</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th style="width: 10px">ID</th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Education</th>
+                                <th>Work</th>
+                                <th>Experience</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for cv in cvs %}
+                                    <tr>
+                                        <td>{{ cv.id }}</td>
+                                        <td>{{ cv.name }}</td>
+                                        <td>{{ cv.address }}</td>
+                                        <td>{{ cv.education }}</td>
+                                        <td>{{ cv.work }}</td>
+                                        <td>{{ cv.experience }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

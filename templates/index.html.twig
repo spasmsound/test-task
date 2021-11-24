@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% form_theme form '_form_theme.html.twig' %}
+
+{% block search %}
+ <ul class="navbar-nav ml-auto">
+     <li class="nav-item">
+         {{ form_start(form, {attr: {class: 'form-inline'}}) }}
+         <div class="input-group input-group-sm">
+             {{ form_row(form.search) }}
+             <div class="input-group-append">
+                 <button class="btn btn-navbar" type="submit">
+                     <i class="fas fa-search"></i>
+                 </button>
+             </div>
+         </div>
+         {{ form_end(form) }}
+     </li>
+ </ul>
+{% endblock %}
+
+{% block content %}
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Jobs</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="content">
+    <div class="container-fluid">
+        <div id="jobs">
+            {% include '_jobs.html.twig' %}
+        </div>
+    </div>
+</section>
+{% endblock %}
